@@ -4,110 +4,59 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="dark" />
-  <title>SiteForge</title>
+  <title>SiteForge V2</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div id="app" class="app-shell">
-    <header class="topbar">
-      <div class="brand-wrap">
-        <button class="icon-btn" id="sidebarToggle" title="Toggle elements panel" aria-label="Toggle elements panel">☰</button>
-        <div class="brand-mark">S</div>
-        <div class="brand-copy">
-          <strong>SiteForge</strong>
-          <span>Visual website builder</span>
-        </div>
-      </div>
-
-      <div class="project-title-wrap">
-        <input id="projectTitle" class="project-title" value="Untitled Site" aria-label="Project title" />
-        <span id="saveState" class="save-state">Saved locally</span>
-      </div>
-
-      <div class="toolbar">
-        <button id="undoBtn" class="tool-btn" title="Undo">↶</button>
-        <button id="redoBtn" class="tool-btn" title="Redo">↷</button>
-        <div class="device-switcher" aria-label="Preview size">
-          <button class="device-btn active" data-device="desktop" title="Desktop">▰</button>
-          <button class="device-btn" data-device="tablet" title="Tablet">▯</button>
-          <button class="device-btn" data-device="mobile" title="Mobile">▯</button>
-        </div>
-        <button id="previewBtn" class="tool-btn primary">Preview</button>
-        <button id="exportBtn" class="tool-btn">Export HTML</button>
-      </div>
-    </header>
-
-    <main class="workspace">
-      <aside id="elementsPanel" class="left-panel panel">
-        <div class="panel-header">
-          <div>
-            <h2>Elements</h2>
-            <p>Drag onto your page</p>
-          </div>
-        </div>
-
-        <div class="elements-grid">
-          <button class="element-card" draggable="true" data-type="section"><span class="el-icon">▱</span><span>Section</span></button>
-          <button class="element-card" draggable="true" data-type="heading"><span class="el-icon">H</span><span>Heading</span></button>
-          <button class="element-card" draggable="true" data-type="text"><span class="el-icon">¶</span><span>Text</span></button>
-          <button class="element-card" draggable="true" data-type="button"><span class="el-icon">▣</span><span>Button</span></button>
-          <button class="element-card" draggable="true" data-type="image"><span class="el-icon">▧</span><span>Image</span></button>
-          <button class="element-card" draggable="true" data-type="spacer"><span class="el-icon">↕</span><span>Spacer</span></button>
-          <button class="element-card" draggable="true" data-type="divider"><span class="el-icon">—</span><span>Divider</span></button>
-          <button class="element-card" draggable="true" data-type="columns"><span class="el-icon">▥</span><span>Columns</span></button>
-        </div>
-
-        <div class="panel-section">
-          <div class="section-heading-row"><h3>Project</h3></div>
-          <button id="saveProjectBtn" class="wide-btn">Save project file</button>
-          <label class="wide-btn file-btn">Open project file<input id="openProjectInput" type="file" accept="application/json,.json" hidden /></label>
-          <button id="newProjectBtn" class="wide-btn danger-ghost">New project</button>
-        </div>
-
-        <div class="panel-tip">
-          <strong>Tip</strong>
-          <span>Click any element to edit it. Double-click text to type directly on the page.</span>
-        </div>
-      </aside>
-
-      <section class="stage-wrap">
-        <div class="stage-toolbar">
-          <span id="deviceLabel">Desktop · 1200 px</span>
-          <span class="stage-hint">Drag to reorder · Click to select</span>
-        </div>
-        <div class="stage-scroll">
-          <div id="pageFrame" class="page-frame desktop">
-            <div id="canvas" class="site-canvas" tabindex="0"></div>
-          </div>
-        </div>
-      </section>
-
-      <aside class="right-panel panel">
-        <div class="panel-header inspector-head">
-          <div>
-            <h2>Inspector</h2>
-            <p id="selectionLabel">Nothing selected</p>
-          </div>
-          <button id="deleteBtn" class="icon-btn danger" title="Delete selected element" disabled>⌫</button>
-        </div>
-        <div id="inspector" class="inspector-empty">
-          <div class="empty-graphic">◇</div>
-          <h3>Select an element</h3>
-          <p>Click something on the page to adjust size, spacing, alignment, color, and more.</p>
-        </div>
-      </aside>
-    </main>
-  </div>
-
-  <div id="previewOverlay" class="preview-overlay hidden" role="dialog" aria-modal="true" aria-label="Site preview">
-    <div class="preview-topbar">
-      <strong>Preview</strong>
-      <button id="closePreviewBtn" class="tool-btn">Close</button>
+<div class="app-shell">
+  <header class="topbar">
+    <div class="brand-wrap"><div class="brand-mark">S</div><div class="brand-copy"><strong>SiteForge</strong><span>Visual website builder · V2</span></div></div>
+    <div class="project-title-wrap"><input id="projectTitle" class="project-title" aria-label="Project title"><span id="saveState" class="save-state">Saved locally</span></div>
+    <div class="toolbar">
+      <button id="undoBtn" class="tool-btn" title="Undo">↶</button><button id="redoBtn" class="tool-btn" title="Redo">↷</button>
+      <div class="device-switcher"><button class="device-btn active" data-device="desktop">Desktop</button><button class="device-btn" data-device="tablet">Tablet</button><button class="device-btn" data-device="mobile">Mobile</button></div>
+      <button id="previewBtn" class="tool-btn primary">Preview</button><button id="exportBtn" class="tool-btn">Export HTML</button>
     </div>
-    <iframe id="previewFrame" title="Website preview"></iframe>
-  </div>
-
-  <div id="toast" class="toast" role="status"></div>
-  <script src="app.js"></script>
+  </header>
+  <main class="workspace">
+    <aside class="left-panel panel">
+      <div class="panel-header"><h2>Elements</h2><p>Click to add inside the selected container</p></div>
+      <div class="elements-grid">
+        <button class="element-card" data-type="section"><span>▱</span>Section</button>
+        <button class="element-card" data-type="container"><span>□</span>Container</button>
+        <button class="element-card" data-type="grid"><span>▦</span>Grid</button>
+        <button class="element-card" data-type="card"><span>▤</span>Card</button>
+        <button class="element-card" data-type="heading"><span>H</span>Heading</button>
+        <button class="element-card" data-type="text"><span>¶</span>Text</button>
+        <button class="element-card" data-type="button"><span>▣</span>Button</button>
+        <button class="element-card" data-type="image"><span>▧</span>Image</button>
+        <button class="element-card" data-type="spacer"><span>↕</span>Spacer</button>
+        <button class="element-card" data-type="divider"><span>—</span>Divider</button>
+      </div>
+      <div class="panel-section"><h3>Project</h3>
+        <button id="saveProjectBtn" class="wide-btn">Save project file</button>
+        <label class="wide-btn file-btn">Open project file<input id="openProjectInput" type="file" accept="application/json,.json" hidden></label>
+        <button id="newProjectBtn" class="wide-btn">New project</button>
+      </div>
+      <div class="panel-section"><h3>Pixel-match reference</h3>
+        <label class="wide-btn file-btn">Load reference image<input id="referenceInput" type="file" accept="image/*" hidden></label>
+        <label class="mini-label">Opacity <input id="referenceOpacity" type="range" min="0" max="100" value="35"></label>
+        <label class="check-row"><input id="referenceToggle" type="checkbox"> Show overlay</label>
+      </div>
+      <div class="panel-tip"><strong>V2</strong><span>Sections, containers, grids, cards, nested content, exact CSS, and responsive overrides.</span></div>
+    </aside>
+    <section class="stage-wrap">
+      <div class="stage-toolbar"><span id="deviceLabel">Desktop · 1200 px</span><span class="stage-hint">Select a container, then add inside it</span></div>
+      <div class="stage-scroll"><div id="pageFrame" class="page-frame desktop"><div id="canvas" class="site-canvas"></div><img id="referenceOverlay" class="reference-overlay hidden" alt="Reference overlay"></div></div>
+    </section>
+    <aside class="right-panel panel">
+      <div class="panel-header inspector-head"><div><h2>Inspector</h2><p id="selectionLabel">Nothing selected</p></div><button id="deleteBtn" class="icon-btn danger" disabled>⌫</button></div>
+      <div id="inspector" class="inspector-empty"><div class="empty-graphic">◇</div><h3>Select an element</h3><p>Adjust content, layout, appearance, and exact responsive CSS.</p></div>
+    </aside>
+  </main>
+</div>
+<div id="previewOverlay" class="preview-overlay hidden"><div class="preview-topbar"><strong>Preview</strong><button id="closePreviewBtn" class="tool-btn">Close</button></div><iframe id="previewFrame" title="Website preview"></iframe></div>
+<div id="toast" class="toast"></div>
+<script src="app.js"></script>
 </body>
 </html>
